@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para você, meu amor!</title>
+    <style>
+        /* Estilos gerais para o corpo da página */
+        body {
+            margin: 0;
+            overflow-x: hidden; /* Evita rolagem horizontal */
+            background-color: #fce4ec; /* Um rosa claro suave */
+            font-family: 'Arial', sans-serif;
+            color: #d81b60; /* Um rosa mais escuro para o texto */
+            text-align: center;
+            position: relative;
+            padding-bottom: 50px; /* Espaço no final da página */
+        }
+
+        /* Seção do cabeçalho com corações flutuantes */
+        .header-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa a altura total da tela inicial */
+            position: relative;
+            overflow: hidden; /* Para os corações flutuarem dentro desta seção */
+        }
+        .message {
+            font-size: 3em; /* Tamanho da fonte grande */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+        /* Estilos para os corações flutuantes */
+        .heart {
+            position: absolute;
+            background-color: #e91e63;
+            transform: rotate(-45deg);
+            animation: floatHeart linear infinite;
+            z-index: 5;
+            opacity: 0;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #e91e63;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: 50%;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 0) rotate(-45deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                transform: translate(0, -20px) rotate(-45deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, -100vh) rotate(-45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Estilos para as seções de fotos e mensagens */
+        .photo-section {
+            padding: 40px 20px; /* Espaçamento interno */
+            background-color: #fff8f8; /* Um fundo um pouco diferente para as seções de foto */
+            margin-top: 30px; /* Espaçamento entre as seções */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px; /* Largura máxima para as seções */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .photo-section img {
+            max-width: 100%; /* Garante que a imagem não saia da seção */
+            height: auto; /* Mantém a proporção da imagem */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        .photo-section .description {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #4a4a4a; /* Cor mais escura para a descrição */
+        }
+
+        /* Nova seção de rodapé com corações e mensagem */
+        .footer-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh; /* Altura um pouco menor que a inicial, ajuste se quiser */
+            position: relative;
+            overflow: hidden;
+            background-color: #fce4ec; /* Mesma cor de fundo do body */
+            margin-top: 50px; /* Espaço após a última foto */
+            padding: 20px;
+        }
+        .footer-message {
+            font-size: 2.5em; /* Tamanho da fonte um pouco menor, ou ajuste a gosto */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <div class="message">
+            Eu te amo! ❤️
+        </div>
+    </div>
+
+    <div class="photo-section">
+        <img src="Fotos/1.jpg" alt="Descrição da foto 1">
+        <p class="description">Dia que pedi vc em namoro ❤️, um momento que nunca vou esquecer. </p>
+    </div>
+
+    <div class="photo-section">
+        <img src="Fotos/Hopi.jpg" alt="Descrição da foto 2">
+        <p class="description">Me lembro exatamente desse dia, das Risadas e a adrenalina que compartilhamos. Sua alegria ilumina o meu mundo❤️.</p>
+    </div>
+
+    <div class="photo-section">
+        <img src="Fotos/bruno.jpg" alt="Descrição da foto 3">
+        <p class="description">Cada aventura ao seu lado se torna inesquecível. Mal posso esperar pelas próximas!</p>
+    </div>
+
+    <div class="photo-section">
+        <img src="Fotos/Apoio.jpg" alt="Descrição da foto 4">
+        <p class="description">Você é a pessoa que sempre me apoia. Sou muito grato por ter você na minha vida.</p>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-message">
+            Você é a melhor parte do meu dia. Te amo para sempre! 🥰
+        </div>
+    </div>
+
+    <script>
+        // Função para criar um coração
+        function createHeart(targetElement) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            targetElement.appendChild(heart);
+
+            const size = Math.random() * 40 + 20; // Corações de 20px a 60px
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.left = `${Math.random() * 100}vw`; // Posição horizontal aleatória
+            heart.style.animationDuration = `${Math.random() * 3 + 4}s`; // Duração da animação (4 a 7 segundos)
+            heart.style.animationDelay = `${Math.random() * 2}s`; // Atraso para aparecer
+
+            // Remove o coração depois que ele sai da tela para não sobrecarregar
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        // Cria corações na seção do cabeçalho
+        const headerSection = document.querySelector('.header-section');
+        setInterval(() => createHeart(headerSection), 300);
+
+        // Cria corações na seção do rodapé
+        const footerSection = document.querySelector('.footer-section');
+        setInterval(() => createHeart(footerSection), 300);
+    </script>
+</body>
+</html>
